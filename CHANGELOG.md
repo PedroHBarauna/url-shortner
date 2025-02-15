@@ -1,3 +1,14 @@
+## [0.4.0]
+
+### Added
+
+- Swagger for documentation
+- ValidationPipe configuration
+
+### Changed
+
+- Construct of the App to support future changes
+
 ## [0.3.0]
 
 ### Added
