@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres-data:
+    image: postgres:13
+    container_name: postgres-shortner-url
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATA}
+    ports:
+      - '5432:5432'
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
