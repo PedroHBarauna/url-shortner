@@ -30,4 +30,5 @@ COPY --from=build /app/node_modules /app/node_modules
 
 WORKDIR /app
 
+CMD ["npm", "run", "migrate"]
 CMD ["npm", "run", "start:prod"]
