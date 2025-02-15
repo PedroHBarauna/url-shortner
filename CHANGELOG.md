@@ -3,7 +3,7 @@
 ### Added
 
 - Prisma configuration to NestJS Module
-- User features create, getById, getByEmail, update and delete with validation safety and
+- User features create, getById, getByEmail, update and delete with validation safety
 - Adding common features of pagination and hashing to password safety
 - Database integration
 
