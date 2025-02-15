@@ -1,4 +1,10 @@
-## [0.0.3] - 2025-02-15
+## [0.3.0]
+
+### Added
+
+- Dockerfile for the url shortner service
+
+## [0.2.0] - 2025-02-15
 
 ### Added
 
@@ -6,7 +12,7 @@
 - Prisma configuration
 - Prisma schema with models and migrations
 
-## [0.0.2] - 2025-02-14
+## [0.1.0] - 2025-02-14
 
 ### Added
 

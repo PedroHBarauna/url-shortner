@@ -13,5 +13,23 @@ services:
     networks:
       - postgres-network
 
+  url-shortner-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: url-shortner-api
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATA: ${DB_DATA}
+      DB_HOST: postgres-data
+      DB_PORT: 5432
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres-data
+    networks:
+      - postgres-network
+
 networks:
   postgres-network:
