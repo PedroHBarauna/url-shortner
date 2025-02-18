@@ -5,7 +5,7 @@ export class UrlCreateDto {
 	@ApiProperty({
 		description: 'Origin Url',
 		format: 'url',
-		example: 'https://www.google.com',
+		example: 'https://teddydigital.io',
 	})
 	@IsNotEmpty()
 	@IsUrl()

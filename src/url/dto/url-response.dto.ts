@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import { IsDateString, IsString } from 'class-validator';
+import { IsDateString } from 'class-validator';
 
 export class UrlResponseDto {
 	@ApiProperty({
@@ -12,7 +12,7 @@ export class UrlResponseDto {
 
 	@ApiProperty({
 		description: 'Original Url',
-		example: 'https://www.google.com',
+		example: 'https://teddydigital.io',
 	})
 	@Expose()
 	originUrl: string;
