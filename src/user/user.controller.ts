@@ -3,16 +3,23 @@ import {
 	Controller,
 	Delete,
 	Get,
+	Headers,
 	HttpStatus,
 	Logger,
 	Param,
 	Patch,
 	Post,
 	Query,
+	UseGuards,
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+	ApiBearerAuth,
+	ApiOperation,
+	ApiResponse,
+	ApiTags,
+} from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { UserCreateDto } from './dto/user-create.dto';
 import { UserResponseDto } from './dto/user-response.dto';
@@ -21,9 +28,11 @@ import { PaginationResultDto } from 'src/common/dto/pagination-result.dto';
 import { EmailDto } from 'src/common/dto/email.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { IdDto } from 'src/common/dto/id.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @ApiTags('User')
-//@ApiBearerAuth('default')
+@ApiBearerAuth('default')
+@UseGuards(AuthGuard)
 @UsePipes(new ValidationPipe({ transform: true }))
 @Controller('user')
 export class UserController {
@@ -54,14 +63,17 @@ export class UserController {
 		return { message: 'User created successfully', user };
 	}
 
-	@Get()
+	@Get('all')
 	@ApiOperation({ summary: 'List all users with pagination' })
 	@ApiResponse({
 		status: HttpStatus.OK,
 		description: 'List of users retrieved successfully.',
 		type: PaginationResultDto<UserResponseDto>,
 	})
-	async list(@Query() queryParams: PaginationQueryDto) {
+	async list(
+		@Query() queryParams: PaginationQueryDto,
+		@Headers() headers,
+	): Promise<PaginationResultDto<UserResponseDto>> {
 		const usersPagination = await this.userService.list(queryParams);
 		this.logger.log(`Retrieved ${usersPagination.pagination.itens} users`);
 		return usersPagination;
