@@ -27,6 +27,8 @@ A autenticação é feita utilizando **JWT** e sessões enquanto e encriptação
 
 O Projeto tem duas tabelas relacionais simples, sendo uma de usuários e uma de URLs. Qualquer um pode criar uma url encurtada com um link de até 255 caracteres, porém a listagem, edição e delete dos mesmos não é possível. Qualquer um pode criar um usuário novo e autenticá-lo, e assim conseguir realizar as operações de URLs antes não permitidas.
 
+Para ser redirecionado, basta colocar o localhost:3000/id_url_encurtada em outra aba e pronto!
+
 A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
 
 ## Como rodar o projeto
