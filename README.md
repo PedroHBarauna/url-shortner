@@ -73,3 +73,14 @@ Se fossemos escalar isso horizontalmente tem alguns pontos a serem levados em co
 2. Banco de dados: Replicação dos dados e Caching para acelerar os processos e manter performance.
 
 3. Sincronização de dados: Utilização de mensageria para a consistência.
+
+## Próximos passos
+
+### Monorepo
+
+O NestJS tem suporte a monorepo nativo pelo CLI tornando possível migrarmos os módulos para um app dentro do monorepo criado.
+Tornar Monorepo traria o benefício de reutilização dos mesmos módulos para outros apps que poderiam ser criados. (Por exemplo: o módulo de usuário e autenticação no app de gestão desses links para verificar acessos e entre outros)
+
+### Adicionar Registros de Clicks dos Links
+
+Atualmente ele apenas registra o click dos redirects, mas podemos a parte do header do request trazer informações relevantes do navegador e da sessão do usuário.
