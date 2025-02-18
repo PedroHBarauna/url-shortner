@@ -73,10 +73,10 @@ A documentação da API pode ser acessada em: **[localhost:3000/api](http://loca
    npm run migrate
    ```
 
-5. Execute o projeto em produção
+5. Execute o projeto:
 
    ```bash
-   npm run start:prod
+   npm run start
    ```
 
 A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
