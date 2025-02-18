@@ -9,6 +9,7 @@ import {
 	Patch,
 	Post,
 	Query,
+	UseGuards,
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
@@ -26,6 +27,7 @@ import { PaginationResultDto } from 'src/common/dto/pagination-result.dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { UrlUpdateDto } from './dto/url-update.dto';
 import { IdDto } from 'src/common/dto/id.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @ApiTags('Url')
 @ApiBearerAuth('default')
@@ -57,11 +59,12 @@ export class UrlController {
 		return url;
 	}
 
-	@ApiOperation({ summary: 'Lista URLs' })
+	@ApiOperation({ summary: 'List URLs' })
 	@ApiOkResponse({
 		description: 'list de URLs',
 		type: UrlResponseDto,
 	})
+	@UseGuards(AuthGuard)
 	@Get('all')
 	async list(
 		@Query() queryParams: PaginationQueryDto,
@@ -76,6 +79,7 @@ export class UrlController {
 		description: 'URL updated successfully',
 		type: UrlResponseDto,
 	})
+	@UseGuards(AuthGuard)
 	@Patch(':id')
 	async update(
 		@Param() param: IdDto,
@@ -91,6 +95,7 @@ export class UrlController {
 		description: 'URL deleted successfully',
 		type: UrlResponseDto,
 	})
+	@UseGuards(AuthGuard)
 	@Delete(':id')
 	async delete(@Param() param: IdDto): Promise<UrlResponseDto> {
 		const url = await this.urlService.delete(param.id);

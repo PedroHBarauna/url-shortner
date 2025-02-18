@@ -32,7 +32,6 @@ import { AuthGuard } from 'src/guards/auth.guard';
 
 @ApiTags('User')
 @ApiBearerAuth('default')
-@UseGuards(AuthGuard)
 @UsePipes(new ValidationPipe({ transform: true }))
 @Controller('user')
 export class UserController {
@@ -63,6 +62,7 @@ export class UserController {
 		return { message: 'User created successfully', user };
 	}
 
+	@UseGuards(AuthGuard)
 	@Get('all')
 	@ApiOperation({ summary: 'List all users with pagination' })
 	@ApiResponse({
@@ -78,6 +78,7 @@ export class UserController {
 		return usersPagination;
 	}
 
+	@UseGuards(AuthGuard)
 	@Get('email')
 	@ApiOperation({ summary: 'Get user details by email' })
 	@ApiResponse({
@@ -96,6 +97,7 @@ export class UserController {
 		return user;
 	}
 
+	@UseGuards(AuthGuard)
 	@Get(':id')
 	@ApiOperation({ summary: 'Get user details by ID' })
 	@ApiResponse({
@@ -114,6 +116,7 @@ export class UserController {
 		return user;
 	}
 
+	@UseGuards(AuthGuard)
 	@Patch(':id')
 	@ApiOperation({ summary: 'Partially update user data' })
 	@ApiResponse({
@@ -136,6 +139,7 @@ export class UserController {
 		return { message: 'User partially updated successfully', updatedUser };
 	}
 
+	@UseGuards(AuthGuard)
 	@Delete(':id')
 	@ApiOperation({ summary: 'Delete user by ID' })
 	@ApiResponse({

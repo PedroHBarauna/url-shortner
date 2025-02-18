@@ -3,7 +3,7 @@ import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class UrlCreateDto {
 	@ApiProperty({
-		description: 'URL original',
+		description: 'Origin Url',
 		format: 'url',
 		example: 'https://www.google.com',
 	})

@@ -4,14 +4,14 @@ import { IsDateString, IsEmail, IsString } from 'class-validator';
 
 export class UserResponseDto {
 	@ApiProperty({
-		description: 'ID do usuário',
+		description: 'User id',
 		example: '1',
 	})
 	@Expose()
 	id: number;
 
 	@ApiProperty({
-		description: 'Nome do usuário',
+		description: 'User name',
 		minLength: 3,
 		maxLength: 50,
 		example: 'Lucas',
@@ -21,7 +21,7 @@ export class UserResponseDto {
 	name: string;
 
 	@ApiProperty({
-		description: 'Email do usuário',
+		description: 'User email',
 		format: 'email',
 		example: 'admin@dominio.com',
 	})
@@ -30,7 +30,7 @@ export class UserResponseDto {
 	email: string;
 
 	@ApiProperty({
-		description: 'Data de criação do usuário',
+		description: 'User created at',
 		example: '2021-07-01T00:00:00.000Z',
 	})
 	@IsDateString()
@@ -38,7 +38,7 @@ export class UserResponseDto {
 	createdAt: Date;
 
 	@ApiProperty({
-		description: 'Data de atualização do usuário',
+		description: 'User updated at',
 		example: '2021-07-01T00:00:00.000Z',
 	})
 	@IsDateString()

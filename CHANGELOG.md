@@ -1,3 +1,11 @@
+## [3.4.1] - 2025-02-18
+
+### Changed
+
+- Removing seeds to keep simple to run
+- Turning UserId not necessary to short url create
+- Running migrations with the project on dockerfile
+
 ## [3.3.1] - 2025-02-18
 
 ### Added

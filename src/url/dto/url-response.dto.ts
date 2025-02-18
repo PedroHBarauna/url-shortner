@@ -4,49 +4,49 @@ import { IsDateString, IsString } from 'class-validator';
 
 export class UrlResponseDto {
 	@ApiProperty({
-		description: 'ID da URL',
+		description: 'Url Id',
 		example: '1',
 	})
 	@Expose()
 	id: number;
 
 	@ApiProperty({
-		description: 'URL original',
+		description: 'Original Url',
 		example: 'https://www.google.com',
 	})
 	@Expose()
 	originUrl: string;
 
 	@ApiProperty({
-		description: 'id da URL encurtada',
+		description: 'Short Url Id',
 		example: `abc123`,
 	})
 	@Expose()
 	shortUrlId: string;
 
 	@ApiProperty({
-		description: 'URL encurtada',
+		description: 'Short url',
 		example: `${process.env.BASE_URL}/abc123`,
 	})
 	@Expose()
 	shortUrl: string;
 
 	@ApiProperty({
-		description: 'ID do Usuário',
+		description: 'User Id',
 		example: '1',
 	})
 	@Expose()
 	userId: number;
 
 	@ApiProperty({
-		description: 'Número de cliques na URL',
+		description: 'URL Clicks',
 		example: '1',
 	})
 	@Expose()
 	clicks: number;
 
 	@ApiProperty({
-		description: 'Data de criação do usuário',
+		description: 'Url created at',
 		example: '2021-07-01T00:00:00.000Z',
 	})
 	@IsDateString()
@@ -54,7 +54,7 @@ export class UrlResponseDto {
 	createdAt: Date;
 
 	@ApiProperty({
-		description: 'Data de atualização do usuário',
+		description: 'Url updated at',
 		example: '2021-07-01T00:00:00.000Z',
 	})
 	@IsDateString()
@@ -62,7 +62,7 @@ export class UrlResponseDto {
 	updatedAt: Date;
 
 	@ApiProperty({
-		description: 'Data de atualização do usuário',
+		description: 'User deleted at',
 		example: '2021-07-01T00:00:00.000Z',
 	})
 	@IsDateString()

@@ -3,7 +3,7 @@ import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class UserCreateDto {
 	@ApiProperty({
-		description: 'Nome do usuário',
+		description: 'User name',
 		minLength: 3,
 		maxLength: 50,
 		example: 'Lucas',
@@ -13,7 +13,7 @@ export class UserCreateDto {
 	name?: string;
 
 	@ApiProperty({
-		description: 'Email do usuário',
+		description: 'User email',
 		format: 'email',
 		example: 'user@urlshortner.com',
 	})
@@ -22,7 +22,7 @@ export class UserCreateDto {
 	email: string;
 
 	@ApiProperty({
-		description: 'Senha do usuário (mínimo de 8 caracteres)',
+		description: 'User Password',
 		minLength: 8,
 		example: 'P@ssw0rd123',
 	})
