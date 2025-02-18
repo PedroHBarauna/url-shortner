@@ -26,4 +26,4 @@ COPY --from=build /app/node_modules /app/node_modules
 
 WORKDIR /app
 
-CMD ["npm", "run", "start:prod"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start:prod"]
