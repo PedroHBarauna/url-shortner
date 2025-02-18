@@ -29,6 +29,8 @@ O Projeto tem duas tabelas relacionais simples, sendo uma de usuários e uma de 
 
 Para ser redirecionado, basta colocar o localhost:3000/id_url_encurtada em outra aba e pronto!
 
+**Certifique-se que a porta que rodará a aplicação não esteja em uso no momento.**
+
 A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
 
 ## Como rodar o projeto
