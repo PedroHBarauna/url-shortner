@@ -75,6 +75,7 @@ export class UrlService {
 
 			const whereOptions = {
 				userId,
+				deletedAt: null,
 			};
 
 			const { take, skip } = this.paginationService.paginate({ itens, page });

@@ -1,3 +1,9 @@
+## [3.8.2] - 2025-02-18
+
+### Changed
+
+- Now every register have a deleted date and if its not null, doesn't appear to list and to update
+
 ## [3.7.2] - 2025-02-18
 
 ### Changed

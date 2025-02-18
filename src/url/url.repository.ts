@@ -27,6 +27,7 @@ export class UrlRepository {
 		return this.prismaService.url.findFirst({
 			where: {
 				id,
+				deletedAt: null,
 			},
 		});
 	}
@@ -35,6 +36,7 @@ export class UrlRepository {
 		return this.prismaService.url.findFirst({
 			where: {
 				shortUrlId,
+				deletedAt: null,
 			},
 		});
 	}
@@ -49,6 +51,7 @@ export class UrlRepository {
 		return this.prismaService.url.update({
 			where: {
 				id,
+				deletedAt: null,
 			},
 			data,
 		});
@@ -58,6 +61,7 @@ export class UrlRepository {
 		return this.prismaService.url.update({
 			where: {
 				id,
+				deletedAt: null,
 			},
 			data: {
 				deletedAt: new Date(),

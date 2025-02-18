@@ -17,6 +17,9 @@ export class UserRepository {
 		return this.prismaService.user.findMany({
 			skip: skip,
 			take: take,
+			where: {
+				deletedAt: null,
+			},
 		});
 	}
 
@@ -24,6 +27,7 @@ export class UserRepository {
 		return this.prismaService.user.findUnique({
 			where: {
 				email,
+				deletedAt: null,
 			},
 		});
 	}
@@ -32,6 +36,7 @@ export class UserRepository {
 		return this.prismaService.user.findUnique({
 			where: {
 				id,
+				deletedAt: null,
 			},
 		});
 	}
@@ -40,15 +45,20 @@ export class UserRepository {
 		return this.prismaService.user.update({
 			where: {
 				id,
+				deletedAt: null,
 			},
 			data,
 		});
 	}
 
 	async delete(id: number) {
-		return this.prismaService.user.delete({
+		return this.prismaService.user.update({
 			where: {
 				id,
+				deletedAt: null,
+			},
+			data: {
+				deletedAt: new Date(),
 			},
 		});
 	}
