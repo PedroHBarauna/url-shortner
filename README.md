@@ -27,10 +27,10 @@ A documentação da API pode ser acessada em:
 
 2. Para rodar as migrations e seeds no terminal com Prisma:
 
-```bash
-npx prisma migrate deploy
-npx prisma seed
-```
+   ```bash
+   npx prisma migrate deploy
+   npx prisma seed
+   ```
 
 ### Rodar no terminal ⚙️
 
@@ -60,9 +60,9 @@ npx prisma seed
 
 5. Execute o projeto em produção
 
-```bash
-npm run start:prod
-```
+   ```bash
+   npm run start:prod
+   ```
 
 ## Pontos de Melhoria
 
