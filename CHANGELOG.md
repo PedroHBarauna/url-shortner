@@ -1,3 +1,9 @@
+## [3.3.0] - 2025-02-18
+
+### Added
+
+- Unit tests to User and Auth modules
+
 ## [3.2.0] - 2025-02-18
 
 ### Changed

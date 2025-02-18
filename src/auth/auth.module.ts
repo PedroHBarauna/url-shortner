@@ -7,19 +7,20 @@ import { UserModule } from 'src/user/user.module';
 import { CommonModule } from 'src/common/commom.module';
 import { UserRepository } from 'src/user/user.repository';
 import { PrismaModule } from 'src/prisma/prisma.module';
+import { HashService } from 'src/common/services/hash.service';
 
 @Module({
 	imports: [
 		JwtModule.register({
 			global: true,
 			secret: jwtConstants.secret,
-			signOptions: { expiresIn: '1h' }, // Expiração de token em 1 hora
+			signOptions: { expiresIn: '1h' },
 		}),
 		UserModule,
 		PrismaModule,
 		CommonModule,
 	],
 	controllers: [AuthController],
-	providers: [AuthService, UserRepository],
+	providers: [AuthService, HashService, UserRepository],
 })
 export class AuthModule {}

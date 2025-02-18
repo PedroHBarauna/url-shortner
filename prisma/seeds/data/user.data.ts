@@ -1,3 +1,8 @@
 export const userData = [
-	{ id: 1, name: 'Lucas', email: 'admin@dominio.com', password: 'P@ssw0rd123' },
+	{
+		id: 1,
+		name: 'Lucas',
+		email: 'user@urlshortner.com',
+		password: 'P@ssw0rd123',
+	},
 ];
