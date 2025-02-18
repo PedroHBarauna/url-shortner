@@ -44,4 +44,12 @@ export class UserResponseDto {
 	@IsDateString()
 	@Expose()
 	updatedAt: Date;
+
+	@ApiProperty({
+		description: 'User deleted at',
+		example: '2021-07-01T00:00:00.000Z',
+	})
+	@IsDateString()
+	@Expose()
+	deletedAt: Date;
 }

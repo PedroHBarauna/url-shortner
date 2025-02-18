@@ -103,6 +103,7 @@ describe('UserController', () => {
 						email: 'user@urlshortner.com',
 						createdAt: new Date(),
 						updatedAt: new Date(),
+						deletedAt: null,
 					},
 				],
 			};
@@ -111,18 +112,6 @@ describe('UserController', () => {
 			const result = await controller.list(paginationQueryDto);
 			expect(result).toEqual(paginationResultDto);
 			expect(service.list).toHaveBeenCalledWith(paginationQueryDto);
-		});
-	});
-
-	describe('getByEmail', () => {
-		it('should return a user by email', async () => {
-			const emailDto: EmailDto = { email: 'user@urlshortner.com' };
-			const userResponseDto: UserResponseDto = mockUserResponse;
-			jest.spyOn(service, 'getByEmail').mockResolvedValue(userResponseDto);
-
-			const result = await controller.getByEmail(emailDto);
-			expect(result).toEqual(userResponseDto);
-			expect(service.getByEmail).toHaveBeenCalledWith(emailDto);
 		});
 	});
 

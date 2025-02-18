@@ -80,26 +80,6 @@ export class UserController {
 
 	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
-	@Get('email')
-	@ApiOperation({ summary: 'Get user details by email' })
-	@ApiResponse({
-		status: HttpStatus.OK,
-		description: 'User retrieved successfully.',
-		type: UserResponseDto,
-	})
-	@ApiResponse({
-		status: HttpStatus.NOT_FOUND,
-		description: 'User not found.',
-	})
-	async getByEmail(@Query() email: EmailDto): Promise<UserResponseDto> {
-		const user = await this.userService.getByEmail(email);
-
-		this.logger.log(`Retrieved user ${email}`);
-		return user;
-	}
-
-	@ApiBearerAuth('default')
-	@UseGuards(AuthGuard)
 	@Get(':id')
 	@ApiOperation({ summary: 'Get user details by ID' })
 	@ApiResponse({
@@ -135,9 +115,7 @@ export class UserController {
 		@Body() userData: UserUpdateDto,
 		@Param() param: IdDto,
 	): Promise<{ message: string; updatedUser: UserResponseDto }> {
-		await this.userService.getById(param.id);
 		const updatedUser = await this.userService.update(param.id, userData);
-
 		this.logger.log(`Partially updated user ${param.id}`);
 		return { message: 'User partially updated successfully', updatedUser };
 	}

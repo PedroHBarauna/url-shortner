@@ -109,32 +109,6 @@ export class UserService {
 		}
 	}
 
-	async getByEmail({ email }: EmailDto): Promise<UserResponseDto> {
-		try {
-			const user = await this.userRepository.getByEmail(email);
-
-			if (!user) {
-				this.logger.warn(`User ${email} not found`);
-				throw new NotFoundException(`User with ${email} not found.`);
-			}
-
-			return plainToClass(UserResponseDto, user, {
-				excludeExtraneousValues: true,
-			});
-		} catch (error) {
-			this.logger.error(
-				`Error getting user by email: ${error.message}`,
-				error.stack,
-			);
-
-			if (error instanceof NotFoundException) {
-				throw new NotFoundException(`User with ${email} not found.`);
-			}
-
-			throw new Error('Error getting user by email');
-		}
-	}
-
 	async update(id: number, userData: UserUpdateDto): Promise<UserResponseDto> {
 		try {
 			const user = await this.userRepository.getById(id);

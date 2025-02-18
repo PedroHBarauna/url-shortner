@@ -4,6 +4,7 @@ export const mockUserResponse = {
 	email: 'user@urlshortner.com',
 	createdAt: new Date('2025-02-17T03:24:00'),
 	updatedAt: new Date('2025-02-17T03:24:00'),
+	deletedAt: null,
 };
 
 export const mockListUser = {
@@ -17,6 +18,7 @@ export const mockCreatedUser = {
 	email: 'user@urlshortner.com',
 	createdAt: new Date('2025-02-17T03:24:00'),
 	updatedAt: new Date('2025-02-17T03:24:00'),
+	deletedAt: null,
 };
 
 export const mockUpdatedUser = {
@@ -25,4 +27,5 @@ export const mockUpdatedUser = {
 	email: 'user@urlshortner.com',
 	createdAt: new Date('2025-02-17T03:24:00'),
 	updatedAt: new Date('2025-02-17T03:24:00'),
+	deletedAt: null,
 };

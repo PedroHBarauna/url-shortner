@@ -71,6 +71,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 			const userResponseDto: UserResponseDto = mockUserResponse;
 
@@ -100,6 +101,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 
 			jest
@@ -123,6 +125,7 @@ describe('UserService', () => {
 					password: 'hashedPassword',
 					createdAt: new Date('2025-02-17T03:24:00'),
 					updatedAt: new Date('2025-02-17T03:24:00'),
+					deletedAt: null,
 				},
 			];
 			const totalItens = 1;
@@ -158,6 +161,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 
 			jest
@@ -189,6 +193,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 
 			jest
@@ -196,20 +201,13 @@ describe('UserService', () => {
 				.mockResolvedValue(userResponseRepository);
 
 			const result = mockUserResponse;
+			console.log(result);
 
 			expect(result).toEqual(
 				plainToClass(UserResponseDto, userResponseRepository, {
 					excludeExtraneousValues: true,
 				}),
 			);
-		});
-
-		it('should throw NotFoundException if user is not found', async () => {
-			jest.spyOn(userRepository, 'getByEmail').mockResolvedValue(null);
-
-			await expect(
-				service.getByEmail({ email: 'user@urlshortner.com' }),
-			).rejects.toThrow(NotFoundException);
 		});
 	});
 
@@ -227,6 +225,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 
 			jest
@@ -267,6 +266,7 @@ describe('UserService', () => {
 				password: 'hashedPassword',
 				createdAt: new Date('2025-02-17T03:24:00'),
 				updatedAt: new Date('2025-02-17T03:24:00'),
+				deletedAt: null,
 			};
 
 			jest
