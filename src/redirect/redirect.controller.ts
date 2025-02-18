@@ -38,17 +38,4 @@ export class RedirectController {
 		const url = await this.redirectService.redirect(shortUrlId);
 		return res.redirect(302, url.originUrl);
 	}
-
-	@ApiOperation({ summary: 'Redirect to the original URL' })
-	@ApiResponse({
-		status: 302,
-		description: 'Redirect to the original URL',
-	})
-	@Post()
-	async redirectWithUrl(@Body() { shortUrl }: RedirectByUrlDto, @Res() res) {
-		const shortUrlId = shortUrl.split('/').pop();
-		this.logger.log(`Redirecting to original URL for ${shortUrlId}`);
-		const url = await this.redirectService.redirect(shortUrlId);
-		return res.redirect(302, url.originUrl);
-	}
 }
