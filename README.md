@@ -1,21 +1,36 @@
 # UrlShortner 🚀
 
-## Contribuidores
+## Autor
 
 - Pedro Barauna
 
-## Versão do NodeJS
+## O que é necessário para rodar?
+
+### Versão do NodeJS
 
 > 22
+
+### Gerenciador de Pacotes (npm, yarn)
+
+**[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)**
+
+**[yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stablem)**
+
+### Docker
+
+**[Instalação](https://www.docker.com/products/docker-desktop/)**
 
 ## Explicação do projeto 📚
 
 O **UrlShortner** é um encurtador de URLs que gera links curtos de 6 caracteres com redirecionamento para a URL de destino. O sistema conta com autenticação de usuários e foi desenvolvido utilizando o **NestJS**, em uma arquitetura de **monolito modular**. Para o gerenciamento de dados, foi utilizado o **PostgreSQL** e o **ORM Prisma**.
 
-A documentação da API pode ser acessada em:  
-**[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
+A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
 
 ## Como rodar o projeto
+
+### Adicionar variáveis de ambiente
+
+1. Crie um arquivo .env e adicione as variáveis do .env.example no arquivo criado.
 
 ### Rodar com Docker 🐳
 
@@ -56,6 +71,8 @@ A documentação da API pode ser acessada em:
    ```bash
    npm run start:prod
    ```
+
+A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
 
 ## Pontos de Melhoria
 
