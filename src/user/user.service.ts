@@ -36,7 +36,7 @@ export class UserService {
 			);
 
 			if (existingUser) {
-				throw new BadRequestException('E-mail já cadastrado.');
+				throw new BadRequestException('E-mail already registered.');
 			}
 
 			const user = await this.userRepository.create(userData);
@@ -48,10 +48,10 @@ export class UserService {
 			this.logger.error(`Error creating user: ${error.message}`, error.stack);
 
 			if (error instanceof BadRequestException) {
-				throw new BadRequestException('E-mail já cadastrado.');
+				throw new BadRequestException('E-mail already registered.');
 			}
 
-			throw new Error('Falha ao criar usuário');
+			throw new Error('Error creating user');
 		}
 	}
 
