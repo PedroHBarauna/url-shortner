@@ -23,6 +23,9 @@
 ## Explicação do projeto 📚
 
 O **UrlShortner** é um encurtador de URLs que gera links curtos de 6 caracteres com redirecionamento para a URL de destino. O sistema conta com autenticação de usuários e foi desenvolvido utilizando o **NestJS**, em uma arquitetura de **monolito modular**. Para o gerenciamento de dados, foi utilizado o **PostgreSQL** e o **ORM Prisma**.
+A autenticação é feita utilizando **JWT** e sessões enquanto e encriptação de login com **bcrypt**.
+
+O Projeto tem duas tabelas relacionais simples, sendo uma de usuários e uma de URLs. Qualquer um pode criar uma url encurtada com um link de até 255 caracteres, porém a listagem, edição e delete dos mesmos não é possível. Qualquer um pode criar um usuário novo e autenticá-lo, e assim conseguir realizar as operações de URLs antes não permitidas.
 
 A documentação da API pode ser acessada em: **[localhost:3000/api](http://localhost:3000/api)** ao rodar o projeto localmente.
 
