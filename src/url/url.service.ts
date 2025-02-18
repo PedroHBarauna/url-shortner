@@ -128,9 +128,14 @@ export class UrlService {
 				throw new NotFoundException(`URL with Id: ${id} not found`);
 			}
 
+			if (url.userId !== userId) {
+				this.logger.warn(`URL with Id: ${id} not found`);
+				throw new NotFoundException(`URL with Id: ${id} not found`);
+			}
+
 			const urlUpdated = await this.urlRepository.update(id, data);
 
-			return plainToClass(UrlResponseDto, url, {
+			return plainToClass(UrlResponseDto, urlUpdated, {
 				excludeExtraneousValues: true,
 			});
 		} catch (error) {
@@ -159,6 +164,11 @@ export class UrlService {
 
 			if (!url) {
 				this.logger.warn(`URL ${id} not found`);
+				throw new NotFoundException(`URL with Id: ${id} not found`);
+			}
+
+			if (url.userId !== userId) {
+				this.logger.warn(`URL with Id: ${id} not found`);
 				throw new NotFoundException(`URL with Id: ${id} not found`);
 			}
 
