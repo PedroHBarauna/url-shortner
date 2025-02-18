@@ -19,6 +19,14 @@ export class UrlRepository {
 		});
 	}
 
+	async getById(id: number): Promise<Url> {
+		return this.prismaService.url.findFirst({
+			where: {
+				id,
+			},
+		});
+	}
+
 	async getByShortUrlId(shortUrlId: string): Promise<Url> {
 		return this.prismaService.url.findFirst({
 			where: {

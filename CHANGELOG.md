@@ -1,3 +1,9 @@
+## [3.5.2] - 2025-02-18
+
+### Added
+
+- Error treatment on User and Url module when list, update and delete
+
 ## [3.4.2] - 2025-02-18
 
 ### Changed
