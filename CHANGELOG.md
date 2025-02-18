@@ -1,3 +1,9 @@
+## [3.3.1] - 2025-02-18
+
+### Added
+
+- correct README to the project
+
 ## [3.3.0] - 2025-02-18
 
 ### Added
