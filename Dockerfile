@@ -1,5 +1,5 @@
-# Build
-FROM node:20 AS build
+# STAGE 1: Build
+FROM node:22 AS build
 
 COPY ./prisma /app/prisma
 COPY ./package.json /app/package.json
@@ -13,12 +13,8 @@ WORKDIR /app
 RUN npm install
 RUN npm run build
 
-# Runtime
-FROM node:20 AS runtime
-
-RUN apt-get update && apt-get install -y --no-install-recommends tzdata && \
-    rm -rf /var/lib/apt/lists/*
-ENV TZ 'America/Sao_Paulo'
+# STAGE 2: Runtime
+FROM node:22 AS runtime
 
 COPY ./prisma /app/prisma
 COPY ./package.json /app/package.json
@@ -30,5 +26,4 @@ COPY --from=build /app/node_modules /app/node_modules
 
 WORKDIR /app
 
-CMD ["npm", "run", "migrate"]
 CMD ["npm", "run", "start:prod"]

@@ -1,7 +1,8 @@
 version: '3.8'
+name: url-shortner
 
 services:
-  postgres-data:
+  postgres-shortner-url:
     image: postgres:13
     container_name: postgres-shortner-url
     environment:
@@ -19,15 +20,14 @@ services:
       dockerfile: Dockerfile
     container_name: url-shortner-api
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DATA: ${DB_DATA}
-      DB_HOST: postgres-data
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@postgres-shortner-url:5432/${DB_DATA}
       DB_PORT: 5432
+      JWT_SECRET: secret
+      BASE_URL: http://localhost:3000
     ports:
       - '3000:3000'
     depends_on:
-      - postgres-data
+      - postgres-shortner-url
     networks:
       - postgres-network
 

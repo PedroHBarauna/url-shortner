@@ -1,3 +1,9 @@
+## [3.2.0] - 2025-02-18
+
+### Changed
+
+- Dockerfile configuration and docker-compose .env to api
+
 ## [3.1.1] - 2025-02-18
 
 ### Changed
