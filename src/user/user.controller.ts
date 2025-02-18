@@ -72,7 +72,6 @@ export class UserController {
 	})
 	async list(
 		@Query() queryParams: PaginationQueryDto,
-		@Headers() headers,
 	): Promise<PaginationResultDto<UserResponseDto>> {
 		const usersPagination = await this.userService.list(queryParams);
 		this.logger.log(`Retrieved ${usersPagination.pagination.itens} users`);

@@ -33,7 +33,7 @@ export class RedirectService {
 				throw new NotFoundException('URL not found');
 			}
 
-			throw new InternalServerErrorException('Erro ao redirecionar');
+			throw new InternalServerErrorException('Error redirecting');
 		}
 	}
 }

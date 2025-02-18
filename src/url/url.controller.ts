@@ -67,7 +67,7 @@ export class UrlController {
 		@Query() queryParams: PaginationQueryDto,
 	): Promise<PaginationResultDto<UrlResponseDto>> {
 		const urls = await this.urlService.list(queryParams);
-		this.logger.log(`Lista de URLs encontrada com sucesso`);
+		this.logger.log(`List of URLs retrieved successfully`);
 		return urls;
 	}
 

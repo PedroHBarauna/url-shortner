@@ -83,7 +83,7 @@ export class UserService {
 
 		if (!user) {
 			this.logger.warn(`User ${id} not found`);
-			throw new NotFoundException(`Usuário com ID ${id} não encontrado.`);
+			throw new NotFoundException(`User with Id: ${id} not found`);
 		}
 
 		return plainToClass(UserResponseDto, user, {
@@ -96,9 +96,7 @@ export class UserService {
 
 		if (!user) {
 			this.logger.warn(`User ${email} not found`);
-			throw new NotFoundException(
-				`Usuário com e-mail ${email} não encontrado.`,
-			);
+			throw new NotFoundException(`User with ${email} not found.`);
 		}
 
 		return plainToClass(UserResponseDto, user, {
@@ -111,7 +109,7 @@ export class UserService {
 
 		if (!user) {
 			this.logger.warn(`User ${id} not found`);
-			throw new NotFoundException(`Usuário com ID ${id} não encontrado.`);
+			throw new NotFoundException(`User with ${id} not found`);
 		}
 
 		if (userData.password) {
@@ -134,7 +132,7 @@ export class UserService {
 
 		if (!user) {
 			this.logger.warn(`User ${id} not found`);
-			throw new NotFoundException(`Usuário com ID ${id} não encontrado.`);
+			throw new NotFoundException(`User with ${id} not found`);
 		}
 
 		await this.userRepository.delete(id);

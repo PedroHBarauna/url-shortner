@@ -1,3 +1,10 @@
+## [3.1.0] - 2025-02-18
+
+### Changed
+
+- Some return messages to english to keep pattern in code
+- Running lint
+
 ## [3.0.0] - 2025-02-18
 
 ### Added
