@@ -1,3 +1,9 @@
+## [3.9.2] - 2025-02-18
+
+### Added
+
+- New endpoint to redirect by POST with necessary somehow
+
 ## [3.8.2] - 2025-02-18
 
 ### Changed
