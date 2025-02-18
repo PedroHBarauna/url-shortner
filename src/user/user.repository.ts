@@ -27,7 +27,6 @@ export class UserRepository {
 		return this.prismaService.user.findUnique({
 			where: {
 				email,
-				deletedAt: null,
 			},
 		});
 	}
