@@ -22,13 +22,14 @@ model User {
 
 model Url {
   id         Int       @id @default(autoincrement())
-  originUrl String    @db.VarChar(100)
-  shortUrl  String    @db.VarChar(100)
-  userId    Int
+  originUrl  String    @db.VarChar(100)
+  shortUrlId String    @db.VarChar(6)
+  shortUrl   String    @db.VarChar(100)
+  userId     Int
   clicks     Int
-  createdAt DateTime  @default(now())    
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime      
+  createdAt  DateTime  @default(now())    
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?      
 
   user       User      @relation(fields:[userId], references: [id])
 }
