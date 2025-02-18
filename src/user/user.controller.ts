@@ -31,7 +31,6 @@ import { IdDto } from 'src/common/dto/id.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 
 @ApiTags('User')
-@ApiBearerAuth('default')
 @UsePipes(new ValidationPipe({ transform: true }))
 @Controller('user')
 export class UserController {
@@ -62,6 +61,7 @@ export class UserController {
 		return { message: 'User created successfully', user };
 	}
 
+	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
 	@Get('all')
 	@ApiOperation({ summary: 'List all users with pagination' })
@@ -78,6 +78,7 @@ export class UserController {
 		return usersPagination;
 	}
 
+	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
 	@Get('email')
 	@ApiOperation({ summary: 'Get user details by email' })
@@ -97,6 +98,7 @@ export class UserController {
 		return user;
 	}
 
+	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
 	@Get(':id')
 	@ApiOperation({ summary: 'Get user details by ID' })
@@ -116,6 +118,7 @@ export class UserController {
 		return user;
 	}
 
+	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
 	@Patch(':id')
 	@ApiOperation({ summary: 'Partially update user data' })
@@ -139,6 +142,7 @@ export class UserController {
 		return { message: 'User partially updated successfully', updatedUser };
 	}
 
+	@ApiBearerAuth('default')
 	@UseGuards(AuthGuard)
 	@Delete(':id')
 	@ApiOperation({ summary: 'Delete user by ID' })

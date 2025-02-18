@@ -12,10 +12,14 @@ export class UrlRepository {
 		});
 	}
 
-	async list(skip: number, take: number) {
+	async list(skip: number, take: number, whereOptions: object) {
 		return this.prismaService.url.findMany({
 			skip: skip,
 			take: take,
+			where: whereOptions,
+			include: {
+				user: true,
+			},
 		});
 	}
 
@@ -35,8 +39,10 @@ export class UrlRepository {
 		});
 	}
 
-	async count() {
-		return this.prismaService.url.count();
+	async count(whereOptions) {
+		return this.prismaService.url.count({
+			where: whereOptions,
+		});
 	}
 
 	async update(id: number, data: any) {

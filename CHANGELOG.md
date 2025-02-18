@@ -1,3 +1,10 @@
+## [3.7.2] - 2025-02-18
+
+### Changed
+
+- Adjusting Authentication to endpoints of redirect and url
+- Getting Auth by request and Default Bearer Auth now
+
 ## [3.6.2] - 2025-02-18
 
 ### Added

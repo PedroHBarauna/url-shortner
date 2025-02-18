@@ -9,6 +9,7 @@ import {
 	Patch,
 	Post,
 	Query,
+	Req,
 	UseGuards,
 	UsePipes,
 	ValidationPipe,
@@ -16,6 +17,7 @@ import {
 import {
 	ApiBearerAuth,
 	ApiHeader,
+	ApiHeaders,
 	ApiOkResponse,
 	ApiOperation,
 	ApiTags,
@@ -30,7 +32,6 @@ import { IdDto } from 'src/common/dto/id.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 
 @ApiTags('Url')
-@ApiBearerAuth('default')
 @UsePipes(new ValidationPipe({ transform: true }))
 @Controller('url')
 export class UrlController {
@@ -38,13 +39,8 @@ export class UrlController {
 
 	constructor(private readonly urlService: UrlService) {}
 
+	@ApiBearerAuth('default')
 	@ApiOperation({ summary: 'Create a  short URL', description: '' })
-	@ApiHeader({
-		name: 'cookie',
-		required: false,
-		description: 'JWT token',
-		example: 'token=jwt_token',
-	})
 	@ApiOkResponse({
 		description: 'Short URL created successfully',
 		type: UrlResponseDto,
@@ -52,13 +48,15 @@ export class UrlController {
 	@Post()
 	async createShortUrl(
 		@Body() data: UrlCreateDto,
-		@Headers('cookie') cookie?: string,
+		@Req() request,
 	): Promise<UrlResponseDto> {
-		const url = await this.urlService.create(data, cookie);
+		const token = request.headers.authorization?.split(' ')[1];
+		const url = await this.urlService.create(data, token);
 		this.logger.log(`Short URL ${url.shortUrl} created successfully`);
 		return url;
 	}
 
+	@ApiBearerAuth('default')
 	@ApiOperation({ summary: 'List URLs' })
 	@ApiOkResponse({
 		description: 'list de URLs',
@@ -68,12 +66,15 @@ export class UrlController {
 	@Get('all')
 	async list(
 		@Query() queryParams: PaginationQueryDto,
+		@Req() request,
 	): Promise<PaginationResultDto<UrlResponseDto>> {
-		const urls = await this.urlService.list(queryParams);
+		const token = request.headers.authorization?.split(' ')[1];
+		const urls = await this.urlService.list(queryParams, token);
 		this.logger.log(`List of URLs retrieved successfully`);
 		return urls;
 	}
 
+	@ApiBearerAuth('default')
 	@ApiOperation({ summary: 'Update URL' })
 	@ApiOkResponse({
 		description: 'URL updated successfully',
@@ -84,12 +85,15 @@ export class UrlController {
 	async update(
 		@Param() param: IdDto,
 		@Body() data: UrlUpdateDto,
+		@Req() request,
 	): Promise<UrlResponseDto> {
-		const url = await this.urlService.update(param.id, data);
+		const token = request.headers.authorization?.split(' ')[1];
+		const url = await this.urlService.update(param.id, data, token);
 		this.logger.log(`URL ${url.shortUrl} updated successfully`);
 		return url;
 	}
 
+	@ApiBearerAuth('default')
 	@ApiOperation({ summary: 'Delete the original URL' })
 	@ApiOkResponse({
 		description: 'URL deleted successfully',
@@ -97,8 +101,9 @@ export class UrlController {
 	})
 	@UseGuards(AuthGuard)
 	@Delete(':id')
-	async delete(@Param() param: IdDto): Promise<UrlResponseDto> {
-		const url = await this.urlService.delete(param.id);
+	async delete(@Param() param: IdDto, @Req() request): Promise<UrlResponseDto> {
+		const token = request.headers.authorization?.split(' ')[1];
+		const url = await this.urlService.delete(param.id, token);
 		this.logger.log(`URL ${url.shortUrl} deleted successfully`);
 		return url;
 	}

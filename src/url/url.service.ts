@@ -8,6 +8,7 @@ import { plainToClass } from 'class-transformer';
 import { PaginationService } from 'src/common/services/pagination.service';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { UrlUpdateDto } from './dto/url-update.dto';
+import { UserRepository } from 'src/user/user.repository';
 
 @Injectable()
 export class UrlService {
@@ -15,11 +16,12 @@ export class UrlService {
 
 	constructor(
 		private readonly urlRepository: UrlRepository,
+		private readonly userRepository: UserRepository,
 		private readonly jwtService: JwtService,
 		private readonly paginationService: PaginationService,
 	) {}
 
-	async create(data: UrlCreateDto, cookie: string): Promise<UrlResponseDto> {
+	async create(data: UrlCreateDto, token: string): Promise<UrlResponseDto> {
 		try {
 			const shortUrlId = nanoid(6);
 
@@ -29,12 +31,10 @@ export class UrlService {
 
 			let userId = null;
 
-			if (cookie) {
-				const token = cookie.substring(6);
-
+			if (token) {
 				userId = await this.jwtService.decode(token)['id'];
 
-				const user = await this.urlRepository.getById(userId);
+				const user = await this.userRepository.getById(userId);
 
 				if (!user) {
 					userId = null;
@@ -62,13 +62,26 @@ export class UrlService {
 		}
 	}
 
-	async list({ page = 1, itens = 25 }: PaginationQueryDto) {
+	async list({ page = 1, itens = 25 }: PaginationQueryDto, token: string) {
 		try {
+			const userId = await this.jwtService.decode(token)['id'];
+
+			const user = await this.userRepository.getById(userId);
+
+			if (!user) {
+				this.logger.warn(`User ${userId} not found`);
+				throw new NotFoundException(`User with Id: ${userId} not found`);
+			}
+
+			const whereOptions = {
+				userId,
+			};
+
 			const { take, skip } = this.paginationService.paginate({ itens, page });
 
-			const urls = await this.urlRepository.list(skip, take);
+			const urls = await this.urlRepository.list(skip, take, whereOptions);
 
-			const totalItens = await this.urlRepository.count();
+			const totalItens = await this.urlRepository.count(whereOptions);
 
 			return {
 				pagination: {
@@ -83,12 +96,30 @@ export class UrlService {
 			};
 		} catch (error) {
 			this.logger.error(`Error listing URLs: ${error.message}`, error.stack);
+
+			if (error instanceof NotFoundException) {
+				throw new NotFoundException(`User in the session not found`);
+			}
+
 			throw new Error('Error listing URLs');
 		}
 	}
 
-	async update(id: number, data: UrlUpdateDto) {
+	async update(
+		id: number,
+		data: UrlUpdateDto,
+		token: string,
+	): Promise<UrlResponseDto> {
 		try {
+			const userId = await this.jwtService.decode(token)['id'];
+
+			const user = await this.userRepository.getById(userId);
+
+			if (!user) {
+				this.logger.warn(`User ${userId} not found`);
+				throw new NotFoundException(`User with Id: ${userId} not found`);
+			}
+
 			const url = await this.urlRepository.getById(id);
 
 			if (!url) {
@@ -105,15 +136,24 @@ export class UrlService {
 			this.logger.error(`Error updating URL: ${error.message}`, error.stack);
 
 			if (error instanceof NotFoundException) {
-				throw new NotFoundException(`URL with Id: ${id} not found`);
+				throw new NotFoundException(error.message);
 			}
 
 			throw new Error('Error updating URL');
 		}
 	}
 
-	async delete(id: number): Promise<UrlResponseDto> {
+	async delete(id: number, token: string): Promise<UrlResponseDto> {
 		try {
+			const userId = await this.jwtService.decode(token)['id'];
+
+			const user = await this.userRepository.getById(userId);
+
+			if (!user) {
+				this.logger.warn(`User ${userId} not found`);
+				throw new NotFoundException(`User with Id: ${userId} not found`);
+			}
+
 			const url = await this.urlRepository.getById(id);
 
 			if (!url) {
@@ -128,7 +168,7 @@ export class UrlService {
 			this.logger.error(`Error deleting URL: ${error.message}`, error.stack);
 
 			if (error instanceof NotFoundException) {
-				throw new NotFoundException(`URL with Id: ${id} not found`);
+				throw new NotFoundException(error.message);
 			}
 
 			throw new Error('Error deleting URL');

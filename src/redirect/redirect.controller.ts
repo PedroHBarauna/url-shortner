@@ -10,9 +10,7 @@ import {
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RedirectService } from './redirect.service';
 import { RedirectDto } from './dto/redirect.dto';
-
 @ApiTags('Redirect')
-@ApiBearerAuth('default')
 @UsePipes(new ValidationPipe({ transform: true }))
 @Controller()
 export class RedirectController {

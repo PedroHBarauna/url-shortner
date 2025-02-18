@@ -3,9 +3,9 @@ import { IsEmail, IsNotEmpty, IsStrongPassword } from 'class-validator';
 
 export class AuthLoginDto {
 	@ApiProperty({
-		description: 'Email do usuário',
+		description: 'User email',
 		format: 'email',
-		example: 'admin@dominio.com',
+		example: 'user@urlshortner.com',
 	})
 	@IsEmail()
 	@IsNotEmpty()
