@@ -1,3 +1,9 @@
+## [3.0.0] - 2025-02-18
+
+### Added
+
+- Redirect module with redirect logic with count
+
 ## [2.0.0] - 2025-02-18
 
 ### Added
