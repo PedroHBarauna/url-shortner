@@ -3,7 +3,7 @@ import { IsString } from 'class-validator';
 
 export class RedirectDto {
 	@ApiProperty({
-		description: 'ID da URL encurtada',
+		description: 'Url short id',
 		example: 'bZnMok',
 	})
 	@IsString()

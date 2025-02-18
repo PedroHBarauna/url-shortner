@@ -25,19 +25,12 @@ A documentação da API pode ser acessada em:
    docker-compose up
    ```
 
-2. Para rodar as migrations e seeds no terminal com Prisma:
-
-   ```bash
-   npx prisma migrate deploy
-   npx prisma seed
-   ```
-
 ### Rodar no terminal ⚙️
 
 1. Para rodar o banco no Docker, execute:
 
    ```bash
-   docker-compose up
+   docker-compose up postgres-shortner-url
    ```
 
 2. Instale as dependências:
@@ -52,13 +45,7 @@ A documentação da API pode ser acessada em:
    npm run migrate
    ```
 
-4. Execute as seeds:
-
-   ```bash
-   npm run seed
-   ```
-
-5. Execute o projeto em produção
+4. Execute o projeto em produção
 
    ```bash
    npm run start:prod

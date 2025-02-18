@@ -1,3 +1,9 @@
+## [3.4.2] - 2025-02-18
+
+### Changed
+
+- Removing seed commands from README
+
 ## [3.4.1] - 2025-02-18
 
 ### Changed

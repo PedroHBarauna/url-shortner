@@ -18,19 +18,19 @@ describe('AuthService', () => {
 				{
 					provide: UserRepository,
 					useValue: {
-						getByEmail: jest.fn(), // Mock UserRepository
+						getByEmail: jest.fn(),
 					},
 				},
 				{
 					provide: HashService,
 					useValue: {
-						comparePassword: jest.fn(), // Mock HashService
+						comparePassword: jest.fn(),
 					},
 				},
 				{
 					provide: JwtService,
 					useValue: {
-						signAsync: jest.fn(), // Mock JWTService
+						signAsync: jest.fn(),
 					},
 				},
 			],
