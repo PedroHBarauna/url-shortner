@@ -33,6 +33,12 @@ export class UrlService {
 				const token = cookie.substring(6);
 
 				userId = await this.jwtService.decode(token)['id'];
+
+				const user = await this.urlRepository.getById(userId);
+
+				if (!user) {
+					userId = null;
+				}
 			}
 
 			const url = await this.urlRepository.create({

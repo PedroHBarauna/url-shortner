@@ -22,7 +22,7 @@ model User {
 
 model Url {
   id         Int       @id @default(autoincrement())
-  originUrl  String    @db.VarChar(100)
+  originUrl  String    @db.VarChar(255)
   shortUrlId String    @db.VarChar(6)
   shortUrl   String    @db.VarChar(100)
   userId     Int?

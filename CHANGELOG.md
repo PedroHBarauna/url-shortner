@@ -1,3 +1,14 @@
+## [3.6.2] - 2025-02-18
+
+### Added
+
+- Healthcheck to database in docker compose to avoid app starts first
+- Url Allow to even a past session can create url but not register past user
+
+### Changed
+
+- Size of origin url to max string
+
 ## [3.5.2] - 2025-02-18
 
 ### Added

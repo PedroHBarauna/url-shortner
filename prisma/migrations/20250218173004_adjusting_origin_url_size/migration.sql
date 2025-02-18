@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Url" ALTER COLUMN "originUrl" SET DATA TYPE VARCHAR(255);

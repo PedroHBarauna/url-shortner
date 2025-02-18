@@ -39,13 +39,19 @@ A documentação da API pode ser acessada em:
    npm install
    ```
 
-3. Execute as migrations:
+3. Execute o schame do Prisma:
+
+   ```bash
+   npx prisma generate
+   ```
+
+4. Execute as migrations:
 
    ```bash
    npm run migrate
    ```
 
-4. Execute o projeto em produção
+5. Execute o projeto em produção
 
    ```bash
    npm run start:prod
