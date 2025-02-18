@@ -24,7 +24,7 @@ export class AuthController {
 			maxAge: 3600000,
 		});
 		return res.send({
-			message: 'Login realizado com sucesso',
+			message: 'Login succeeded',
 			accessToken,
 		});
 	}
@@ -35,6 +35,6 @@ export class AuthController {
 	})
 	async logout(@Res() res: Response) {
 		res.clearCookie('token');
-		return res.send({ message: 'Logout realizado com sucesso' });
+		return res.send({ message: 'Logout succeeded' });
 	}
 }

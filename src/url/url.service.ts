@@ -7,7 +7,6 @@ import { JwtService } from '@nestjs/jwt';
 import { plainToClass } from 'class-transformer';
 import { PaginationService } from 'src/common/services/pagination.service';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
-import { IdDto } from 'src/common/dto/id.dto';
 import { UrlUpdateDto } from './dto/url-update.dto';
 
 @Injectable()
