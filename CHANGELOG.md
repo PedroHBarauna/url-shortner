@@ -1,3 +1,9 @@
+## [3.1.1] - 2025-02-18
+
+### Changed
+
+- Fixing update and delete url methods
+
 ## [3.1.0] - 2025-02-18
 
 ### Changed

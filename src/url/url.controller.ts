@@ -78,10 +78,10 @@ export class UrlController {
 	})
 	@Patch(':id')
 	async update(
-		@Param('id') id: IdDto,
+		@Param() param: IdDto,
 		@Body() data: UrlUpdateDto,
 	): Promise<UrlResponseDto> {
-		const url = await this.urlService.update(id, data);
+		const url = await this.urlService.update(param.id, data);
 		this.logger.log(`URL ${url.shortUrl} updated successfully`);
 		return url;
 	}
@@ -92,8 +92,8 @@ export class UrlController {
 		type: UrlResponseDto,
 	})
 	@Delete(':id')
-	async delete(@Param('id') id: IdDto): Promise<UrlResponseDto> {
-		const url = await this.urlService.delete(id);
+	async delete(@Param() param: IdDto): Promise<UrlResponseDto> {
+		const url = await this.urlService.delete(param.id);
 		this.logger.log(`URL ${url.shortUrl} deleted successfully`);
 		return url;
 	}

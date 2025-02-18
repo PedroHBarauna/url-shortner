@@ -68,7 +68,7 @@ export class UrlService {
 		};
 	}
 
-	async update({ id }: IdDto, data: UrlUpdateDto) {
+	async update(id: number, data: UrlUpdateDto) {
 		const url = await this.urlRepository.update(id, data);
 
 		return plainToClass(UrlResponseDto, url, {
@@ -76,7 +76,7 @@ export class UrlService {
 		});
 	}
 
-	async delete({ id }: IdDto) {
+	async delete(id: number) {
 		const url = await this.urlRepository.delete(id);
 
 		return plainToClass(UrlResponseDto, url);
